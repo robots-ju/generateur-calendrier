@@ -5,7 +5,7 @@
  * @param {number} itemsPerChunk
  * @returns {Array}
  */
-export default function (items, itemsPerChunk) {
+export default function (items: any[], itemsPerChunk: number): any[][] {
     let R = [];
     for (let i = 0; i < items.length; i += itemsPerChunk) {
         R.push(items.slice(i, i + itemsPerChunk));

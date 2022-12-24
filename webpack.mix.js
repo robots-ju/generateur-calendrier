@@ -5,7 +5,7 @@ mix.options({
     publicPath: 'site',
 });
 
-mix.js('src/js/app.js', 'site/assets')
+mix.ts('src/js/app.ts', 'site/assets')
     .sass('src/sass/app.scss', 'site/assets')
     .copy('src/html/index.html', 'site')
     .version();

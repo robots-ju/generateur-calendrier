@@ -1,5 +1,6 @@
-import m from 'mithril';
+import * as m from 'mithril';
 import chunkArray from './chunkArray';
+import {feries} from './joursFeries';
 
 const weekDays = [
     'Dimanche',
@@ -26,63 +27,23 @@ const months = [
     'Décembre',
 ];
 
-// https://www.jura.ch/DES/SEE/AMT/Documentation-formulaires-et-bases-legales/Jours-feries/Jours-feries-officiels-dans-le-Canton-du-Jura.html
-// Month starting with 1 = January
-const feries = [
-    [2018, 1, 1],
-    [2018, 1, 2],
-    [2018, 3, 30],
-    [2018, 4, 2],
-    [2018, 5, 1],
-    [2018, 5, 10],
-    [2018, 5, 21],
-    [2018, 5, 31],
-    [2018, 6, 23],
-    [2018, 8, 1],
-    [2018, 8, 15],
-    [2018, 11, 1],
-    [2018, 12, 25],
-
-    [2019, 1, 1],
-    [2019, 1, 2],
-    [2019, 4, 19],
-    [2019, 4, 22],
-    [2019, 5, 1],
-    [2019, 5, 30],
-    [2019, 6, 10],
-    [2019, 6, 20],
-    [2019, 6, 23],
-    [2019, 8, 1],
-    [2019, 8, 15],
-    [2019, 11, 1],
-    [2019, 12, 25],
-
-    [2020, 1, 1],
-    [2020, 1, 2],
-    [2020, 4, 10],
-    [2020, 4, 13],
-    [2020, 5, 1],
-    [2020, 5, 21],
-    [2020, 6, 1],
-    [2020, 6, 11],
-    [2020, 6, 23],
-    [2020, 8, 1],
-    [2020, 8, 15],
-    [2020, 11, 1],
-    [2020, 12, 25],
-];
-
 const DAYS_PER_WEEK = 7;
 const WEEK_START_ON = 1;
 
-export default {
-    view(vnode) {
+interface CalendarMonthAttrs {
+    year: number
+    month: number
+    weeksPerLine?: number
+}
+
+export default class CalendarMonth implements m.ClassComponent<CalendarMonthAttrs> {
+    view(vnode: m.Vnode<CalendarMonthAttrs>) {
         const {
             month,
             weeksPerLine = 1,
         } = vnode.attrs;
 
-        const year = parseInt(vnode.attrs.year);
+        const {year} = vnode.attrs;
 
         let head = [];
 
