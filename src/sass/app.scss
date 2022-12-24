@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.calendar-print {
+    font-family: Roboto;
+
+    .calendar-page {
+        width: 210mm;
+        height: 297mm;
+        padding: 15mm;
+        page-break-after: always;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calendar-meta {
+        margin-top: auto;
+    }
+
+    table {
+        width: 50%;
+    }
+
+    thead {
+        text-align: center;
+        color: #afafaf;
+
+        th {
+            font-weight: normal;
+            border-top: none;
+            padding: 0.6em;
+        }
+    }
+
+    .calendar-day {
+        text-align: center;
+        padding: 0.6em 0.4em;
+
+        .date-wrapper {
+            border-radius: 100%;
+            width: 2em;
+            height: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        &.weekday-6 .date-wrapper,
+        &.weekday-0 .date-wrapper {
+            background: #efefef;
+        }
+
+        &.day-ferie .date-wrapper {
+            background: lighten(#478A23, 50%);
+        }
+    }
+
+    .calendar-month {
+        font-size: 2.3em;
+        margin: 0;
+    }
+
+    .calendar-year {
+        font-size: 1.5em;
+        margin: 0;
+        line-height: 0;
+    }
+
+    .calendar-month-heading {
+        text-align: left;
+        padding-bottom: 30px;
+    }
+
+    .calendar-month-heading * {
+        //display: inline-block;
+        font-size: 5em;
+
+        &.calendar-year {
+            position: relative;
+            top: 0.3em;
+            margin-left: 10px;
+            font-size: 2em;
+            color: #478a23;
+        }
+    }
+}
+
+@media screen {
+    .calendar-print {
+        background: black;
+        padding: 20px;
+
+        .calendar-page {
+            background: white;
+            margin: 50px;
+        }
+    }
+}

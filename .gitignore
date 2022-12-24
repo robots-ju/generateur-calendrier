@@ -1,0 +1,8 @@
+/node_modules
+/site
+npm-debug.log
+yarn-error.log
+
+# We are not deploying this and only using once per year, locking dependencies is not useful
+package-lock.json
+yarn.lock
